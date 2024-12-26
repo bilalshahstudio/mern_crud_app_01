@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Create() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [age, setAge] = useState(0);
   const [error, setError] = useState("");
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -16,16 +19,16 @@ function Create() {
     });
     const result = await response.json();
 
-    if (!result.ok) {
+    if (!response.ok) {
       console.log(result.error);
       setError(result.error);
-    }
-    if (result.ok) {
+    } else {
       console.log(result);
       setError("");
       setName("");
       setEmail("");
       setAge("");
+      navigate("/all");
     }
   };
   return (
