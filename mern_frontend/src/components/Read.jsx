@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function Read() {
   const [data, setData] = useState();
@@ -34,7 +35,7 @@ function Read() {
       setTimeout(() => {
         setError("");
         getData();
-      }, 2000);
+      }, 1000);
     }
   };
   useEffect(() => {
@@ -63,9 +64,9 @@ function Read() {
                 >
                   Delete
                 </a>
-                <a href="#" className="card-link">
+                <Link to={`/${element._id}`} className="card-link">
                   Edit
-                </a>
+                </Link>
               </div>
             </div>
           </div>
