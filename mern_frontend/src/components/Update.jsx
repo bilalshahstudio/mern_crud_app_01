@@ -13,16 +13,16 @@ function Update() {
   const getSingleUser = async () => {
     const response = await fetch(`http://localhost:5000/${id}`);
 
-    const result = await response.json();
+    const result = await response?.json();
     if (!response.ok) {
       console.log(result.error);
       setError(result.error);
     } else {
-      setError("");
       console.log("updated user", result);
-      setName(result.name);
-      setEmail(result.email);
-      setAge(result.age);
+      setError("");
+      setName(result?.name);
+      setEmail(result?.email);
+      setAge(result?.age);
     }
   };
   //send updated data to backend
@@ -34,11 +34,11 @@ function Update() {
       body: JSON.stringify(updatedUser),
       headers: { "Content-Type": "application/json" },
     });
-    const result = await response.json();
+    const result = await response?.json();
 
     if (!response.ok) {
-      console.log(result.error);
-      setError(result.error);
+      console.log(result?.error);
+      setError(result?.error);
     } else {
       setError("");
       navigate("/all");

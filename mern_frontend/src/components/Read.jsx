@@ -8,12 +8,12 @@ function Read() {
   async function getData() {
     try {
       const response = await fetch("http://localhost:5000");
-      const result = await response.json();
+      const result = await response?.json();
       console.log(result);
 
-      if (!response.ok) {
+      if (!response?.ok) {
         console.log(result.error);
-        setError(result.error);
+        setError(result?.error);
       } else {
         setData(result);
       }
@@ -27,9 +27,9 @@ function Read() {
       method: "DELETE",
     });
     const result = await response.json();
-    if (!response.ok) {
-      console.log(result.error);
-      setError(result.error);
+    if (!response?.ok) {
+      console.log(result?.error);
+      setError(result?.error);
     } else {
       setError("Deleted Successfuly");
       setTimeout(() => {
