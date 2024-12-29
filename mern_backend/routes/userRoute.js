@@ -74,7 +74,6 @@ router.patch("/:id", async (req, res) => {
 
     res.status(500).json({ error: error.message });
   }
-  res.send("my api is running");
 });
 
 module.exports = router;
